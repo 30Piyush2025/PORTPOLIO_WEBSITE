@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101713">
+  <title>Engineering Archive | Confidential Dossier</title>
+  <meta name="description" content="Explore software engineering, AI, and full-stack projects in an interactive 3D archive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/archive.css">
+</head>
+<body>
+  <div id="world" aria-label="Interactive 3D archive room"></div>
+  <div id="paper-world"></div>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <header class="hud">
+    <button class="wordmark" id="home" aria-label="Return to archive entrance">
+      <span class="sigil" id="hud-sigil">a<span>m</span></span>
+      <span><span id="hud-name">AMMAR MUNIR</span><small id="hud-sub">INDEPENDENT ENGINEERING ARCHIVE</small></span>
+    </button>
+    <div class="hud-tools">
+      <a class="portfolio-link" href="./portfolio/">PORTFOLIO <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 13 13 3M3 3h10v10"/></svg></a>
+      <span class="session"><i></i> VISITOR ACCESS</span>
+      <button id="sound" aria-pressed="true" aria-label="Disable sound">SOUND <span>ON</span></button>
+      <button id="motion" aria-pressed="false" aria-label="Reduce motion">MOTION <span>ON</span></button>
+      <button id="index-button" class="index-button">FILE INDEX <span>☷</span></button>
+    </div>
+  </header>
+
+  <main id="experience">
+    <section class="intro" id="intro">
+      <div class="eyebrow" id="intro-dept"><span class="tiny-cross">+</span> DEPARTMENT OF THOUGHTFUL SYSTEMS</div>
+      <h1 id="intro-title">Ammar Munir <span>Senior Software <br><em>Engineer.</em></span></h1>
+      <p id="intro-desc">Some work deserves a closer look.<br>Three years of building AI and full-stack products.<br>The evidence is inside.</p>
+      <button class="enter-button" id="enter">
+        <span>OPEN THE ARCHIVE</span>
+        <span class="enter-arrow">
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 13 13 3M3 3h10v10"/></svg>
+        </span>
+      </button>
+      <div class="intro-meta">
+        <span id="intro-fileno">FILE NO. AM–001</span>
+        <span id="intro-rolesub">AI / BACKEND / FULL STACK</span>
+      </div>
+      <div class="room-label" id="room-label">
+        <span class="room-number">01</span>
+        <span>THE ARCHIVE ROOM<small>LOOK AROUND. FOLLOW YOUR CURIOSITY.</small></span>
+      </div>
+    </section>
+
+    <div id="object-prompt" class="object-prompt" hidden>
+      <span class="prompt-line"></span>
+      <span class="eyebrow" id="prompt-kicker">PERSONNEL RECORD</span>
+      <h2 id="prompt-title">You found the file.</h2>
+      <p id="prompt-copy">One engineer. A few interesting operations.</p>
+      <button id="object-action" class="enter-button">
+        <span id="action-label">TAKE THE DOSSIER</span>
+        <span>
+          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 13 13 3M3 3h10v10"/></svg>
+        </span>
+      </button>
+    </div>
+
+    <div class="annotation" id="annotation" aria-hidden="true">
+      <span class="annotation-dot"></span>
+    </div>
+
+    <aside class="chapter-rail" id="chapter-rail" aria-label="Dossier chapters" hidden></aside>
+
+    <div class="book-tools" id="book-tools" hidden>
+      <button id="return" aria-label="Return dossier to cabinet">↶ <span>RETURN FILE</span></button>
+      <div class="pager">
+        <button id="previous" aria-label="Previous dossier pages">←</button>
+        <span id="page-count">01 — 02 / 14</span>
+        <button id="next" aria-label="Next dossier pages">→</button>
+      </div>
+      <button id="read-button">READING VIEW <span><svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 13 13 3M3 3h10v10"/></svg></span></button>
+    </div>
+  </main>
+
+  <footer class="status-bar">
+    <span id="status-text" role="status" aria-live="polite">ESTABLISHING ARCHIVE CONNECTION…</span>
+    <span id="interaction-hint">CLICK TO EXPLORE · DRAG TO LOOK</span>
+    <span class="coordinates" id="bar-coords">30.47° N / 70.96° E <span>PK</span></span>
+  </footer>
+
+  <div class="loading" id="loading">
+    <span class="loading-mark" id="load-mark">am.</span>
+    <span class="eyebrow">PREPARING YOUR CLEARANCE</span>
+    <div class="loading-track"><span></span></div>
+  </div>
+
+  <dialog id="index-dialog" aria-labelledby="index-title">
+    <button class="close-dialog" aria-label="Close file index">✕</button>
+    <span class="eyebrow" id="dialog-index-fileno">ARCHIVE / DIRECTORY</span>
+    <h2 id="index-title">Follow the evidence.</h2>
+    <p>Choose a chapter to open the dossier.</p>
+    <div id="index-list"></div>
+    <button id="accessible-read" class="plain-link">Open the complete reading view <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 13 13 3M3 3h10v10"/></svg></button>
+  </dialog>
+
+  <dialog id="reader" aria-labelledby="reader-title">
+    <button class="close-dialog" aria-label="Close reading view">✕</button>
+    <h2 id="reader-title">The complete dossier.</h2>
+    <p class="reader-intro" id="reader-intro-text">Engineering Archive · Complete Reading View</p>
+    <div id="reader-content"></div>
+    <button id="print" class="print-button">Print / save as PDF <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 13 13 3M3 3h10v10"/></svg></button>
+  </dialog>
+
+  <dialog id="image-dialog" aria-label="Project image">
+    <button class="close-dialog" aria-label="Close project image">✕</button>
+    <img id="enlarged-image" alt="">
+    <p id="image-note"></p>
+    <p><a id="image-source" target="_blank" rel="noreferrer" hidden>VIEW ORIGINAL WEBSITE <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 13 13 3M3 3h10v10"/></svg></a></p>
+  </dialog>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
