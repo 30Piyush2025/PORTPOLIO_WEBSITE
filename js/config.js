@@ -3,6 +3,8 @@
 // Personalized for Piyush Tiwari — AI/ML Engineer
 // ========================================================================
 
+// Site root, computed dynamically so images work at any folder depth
+const BASE_URL = new URL("../", import.meta.url).href;
 export const CONFIG = {
   personal: {
     name: "Piyush Tiwari",
@@ -43,7 +45,7 @@ export const CONFIG = {
     email: "piyush.tiwari.ai@outlook.com",
     linkedin: "https://github.com/30Piyush2025",
     github: "https://github.com/30Piyush2025",
-    portraitUrl: "/piyush-portrait.jpg"
+    portraitUrl: BASE_URL + "piyush-portrait.jpg"
   },
 
   chapters: [
@@ -142,7 +144,7 @@ export const CONFIG = {
       ],
       outcome: "A deployed agentic pipeline that turns raw project briefs into polished, publish-ready professional content in seconds.",
       visual: "content",
-      imageSrc: "/projects/env-concept.png",
+      imageSrc: BASE_URL + "projects/env-concept.png",
       imageWidth: 1536,
       imageHeight: 1024,
       imageAlt: "AI Content Agent concept interface with routing graph",
@@ -171,7 +173,7 @@ export const CONFIG = {
       ],
       outcome: "A published, reproducible clinical NLP diagnostic model with high validation accuracy and an interactive web demo.",
       visual: "health",
-      imageSrc: "/projects/joint-concept.png",
+      imageSrc: BASE_URL + "projects/joint-concept.png",
       imageWidth: 1536,
       imageHeight: 1024,
       imageAlt: "Health Report Prediction Model interface with diagnostic breakdown",
@@ -200,7 +202,7 @@ export const CONFIG = {
       ],
       outcome: "Automated synthesis of entire video lecture series into high-yield, printable study archives within seconds.",
       visual: "youtube",
-      imageSrc: "/projects/arq-product-screenshot.png",
+      imageSrc: BASE_URL + "projects/arq-product-screenshot.png",
       imageWidth: 3024,
       imageHeight: 1720,
       imageAlt: "YouTube Notes Agent generating structured study documents",
@@ -229,7 +231,7 @@ export const CONFIG = {
       ],
       outcome: "A national hackathon platform for equitable grain procurement and high-accuracy predictive customer churn intelligence.",
       visual: "krishi",
-      imageSrc: "/projects/review-concept.png",
+      imageSrc: BASE_URL + "projects/review-concept.png",
       imageWidth: 1536,
       imageHeight: 1024,
       imageAlt: "KrishiSetu-Q and Churn Prediction analytics dashboard",

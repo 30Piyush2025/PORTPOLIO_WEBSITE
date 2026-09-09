@@ -63,7 +63,7 @@ let html = `
     <h2 id="experience-title">Experience</h2>
     ${CONFIG.serviceHistory.map(job => `
       <div class="service-item">
-        ${job.logo ? `<a class="employer-logo" href="${job.companyUrl}" target="_blank" rel="noreferrer" aria-label="Visit ${job.company}"><img loading="lazy" src="${job.logo.startsWith('/') ? job.logo : '/companies/' + job.logo}" alt="${job.company} logo" onerror="this.style.display='none'"></a>` : ''}
+        ${job.logo ? `<a class="employer-logo" href="${job.companyUrl}" target="_blank" rel="noreferrer" aria-label="Visit ${job.company}"><img loading="lazy" src="${job.logo.startsWith('http') ? job.logo : new URL('../companies/' + job.logo.replace(/^\//, ''), import.meta.url).href}" alt="${job.company} logo" onerror="this.style.display='none'"></a>` : ''}
         <span>${job.period}</span>
         <h3>${job.company} ${job.isCurrent ? '<small>CURRENT</small>' : ''}</h3>
         <p>${job.role}<br>${job.description}</p>

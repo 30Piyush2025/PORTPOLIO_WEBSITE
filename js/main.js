@@ -29,7 +29,7 @@ const makeTags = tags => `
 
 const makeLogoLink = (name, logo, url) => `
 <a class="employer-logo" href="${url}" target="_blank" rel="noreferrer" aria-label="Visit ${name}">
-  <img src="${logo.startsWith('/') ? logo : '/companies/' + logo}" alt="${name} logo" onerror="this.style.display='none'">
+  <img src="${logo.startsWith('http') ? logo : new URL('../companies/' + logo.replace(/^\//, ''), import.meta.url).href}" alt="${name} logo" onerror="this.style.display='none'">
 </a>`;
 
 const makeEvidenceImage = proj => `
